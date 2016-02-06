@@ -1,5 +1,5 @@
 class Point
-  attr_reader :longitude, :latitude
+  attr_accessor :longitude, :latitude
 
   def initialize(lng, lat)
     @longitude = lng

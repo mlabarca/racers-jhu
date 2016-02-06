@@ -1,5 +1,5 @@
 class Address
-  attr_reader :city, :state, :location
+  attr_accessor :city, :state, :location
 
   def initialize(city, state, location)
     @city = city
