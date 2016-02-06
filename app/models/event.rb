@@ -6,6 +6,7 @@ class Event
   field :u, type: String,  as: :units
 
   embedded_in :parent, polymorphic: true, touch: true
+  validates_presence_of :order, :name
 
   def meters
     case units
