@@ -13,6 +13,9 @@ class Entrant
   embeds_one  :race, class_name: 'RaceRef', autobuild: true  
   embeds_one  :racer, as: :parent, class_name: 'RacerInfo', autobuild: true
 
+  scope :past,     ->{ where({'race.date' => {'$lt' => Date.current}})}
+  scope :upcoming, ->{ where({'race.date' => {'$gte' => Date.current}})}
+
   def update_total(result)
     self.secs = results.map(&:secs).compact.sum
   end

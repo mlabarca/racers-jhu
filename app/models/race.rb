@@ -85,4 +85,9 @@ class Race
     entrant.save
     entrant
   end
+
+  def self.upcoming_available_to racer
+    upcoming_registered_ids = racer.races.upcoming.pluck(:race).map {|r| r[:_id]}
+    upcoming_unregistered = Race.upcoming.not_in(:id =>upcoming_registered_ids)
+  end
 end
