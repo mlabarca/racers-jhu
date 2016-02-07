@@ -1,5 +1,6 @@
 class RacersController < ApplicationController
   before_action :set_racer, only: [:show, :edit, :update, :destroy]
+  before_action :set_races, only: [:show, :edit]
 
   # GET /racers
   # GET /racers.json
@@ -65,6 +66,10 @@ class RacersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_racer
       @racer = Racer.find(params[:id])
+    end
+
+    def set_races
+      @races = Race.upcoming_available_to(@racer).order_by(:date.asc) if @racer
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
