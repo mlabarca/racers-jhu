@@ -2,6 +2,6 @@ class BikeResult < LegResult
   field :mph, type: Float
   
   def calc_ave
-    self[:mph] = 1.0 # Dummy number
+    self[:mph] = event.miles * 3600/secs if event && secs
   end
 end
