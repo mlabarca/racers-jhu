@@ -15,4 +15,8 @@ class Entrant
   def update_total(result)
     self.secs = results.map(&:secs).sum
   end
+
+  def the_race
+    race.race
+  end
 end
